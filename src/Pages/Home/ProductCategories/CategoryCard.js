@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../../../Assets/logo.jpg'
 
-const CategoryCard = () => {
+const CategoryCard = (category) => {
+    const { categoryName, categoryDetails, img } = category.category;
+    console.log(categoryName, categoryDetails)
     return (
-        <div className="card w-3/4 glass mx-auto">
+        <div className="card card-compact bg-base-200 shadow-xl w-3/4 mx-auto">
             <figure className='h-48 '>
                 <img src={img} alt="laptop category" />
             </figure>
-            <div className="card-body">
-                <h2 className="card-title">Title</h2>
-                <p>Rating: ★</p>
+            <div className="card-body bg-base-300">
+                <h2 className="card-title">{categoryName}</h2>
+                <p>{categoryDetails.slice(0, 100)}...</p>
                 <div className="card-actions justify-center">
-                    <Link to={`/services/`}>
+                    <Link to={`/category/:id`}>
                         <button className="btn btn-outline">Details</button>
                     </Link>
                 </div>

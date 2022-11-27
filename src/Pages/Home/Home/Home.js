@@ -8,11 +8,8 @@ const Home = () => {
     return (
         <div>
             <HomeBanner></HomeBanner>
-            <div className='text-center mt-10 mb-2'>
-                <p className='font-semibold'>ADVERTISEMENT</p>
-            </div>
-            <AdvertiseProducts></AdvertiseProducts>
             <ProductCategories></ProductCategories>
+            <AdvertiseProducts></AdvertiseProducts>
             <HomeWhyUs></HomeWhyUs>
         </div>
     );

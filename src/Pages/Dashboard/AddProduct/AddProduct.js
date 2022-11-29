@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Form, Link } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();

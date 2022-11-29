@@ -7,12 +7,9 @@ const MyOrders = () => {
             <h1 className='font-bold'>My Orders:</h1>
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
-
                     <thead className='text-center'>
                         <tr>
-                            <th>
-                                SL No.
-                            </th>
+                            <td>SL No.</td>
                             <th>Image</th>
                             <th>Product Name</th>
                             <th>Price</th>
@@ -21,9 +18,7 @@ const MyOrders = () => {
                     </thead>
                     <tbody className='text-center'>
                         <tr>
-                            <th>
-                                1
-                            </th>
+                            <td>1</td>
                             <td>
                                 <div className="flex justify-center space-x-3">
                                     <div className="avatar">

@@ -5,15 +5,13 @@ import logo from '../../../Assets/bannerImg.webp'
 const MyProducts = () => {
     return (
         <div className='p-5'>
-            <h1 className='font-bold'>My Orders:</h1>
+            <h1 className='font-bold'>My Products:</h1>
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
 
                     <thead className='text-center'>
                         <tr>
-                            <th>
-                                SL No.
-                            </th>
+                            <td>SL No.</td>
                             <th>Image</th>
                             <th>Product Status</th>
                             <th>Price</th>
@@ -23,9 +21,7 @@ const MyProducts = () => {
                     </thead>
                     <tbody className='text-center'>
                         <tr>
-                            <th>
-                                1
-                            </th>
+                            <td>1</td>
                             <td>
                                 <div className="flex justify-center space-x-3">
                                     <div className="avatar">

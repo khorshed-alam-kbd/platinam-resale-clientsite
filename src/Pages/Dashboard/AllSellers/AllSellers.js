@@ -3,22 +3,22 @@ import React from 'react';
 const AllSellers = () => {
     return (
         <div className='p-5'>
-            <h1 className='font-bold'>My Orders:</h1>
+            <h1 className='font-bold'>Sellers Information:</h1>
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
 
                     <thead className=''>
                         <tr>
-                            <th>SL No.</th>
+                            <td>SL No.</td>
                             <th>Name</th>
                             <th>Email Address</th>
-                            <th>Verify Seller</th>
-                            <th>Delete Seller</th>
+                            <th>Verify</th>
+                            <th>Delete </th>
                         </tr>
                     </thead>
                     <tbody className=''>
                         <tr>
-                            <th> 1</th>
+                            <td> 1</td>
                             <td> Khorshed alam</td>
                             <td> Zemlak, Daniel and Leanno</td>
                             <th>

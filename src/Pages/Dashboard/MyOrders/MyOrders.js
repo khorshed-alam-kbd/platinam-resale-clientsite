@@ -8,7 +8,7 @@ const MyOrders = () => {
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
 
-                    <thead>
+                    <thead className='text-center'>
                         <tr>
                             <th>
                                 SL No.
@@ -19,13 +19,13 @@ const MyOrders = () => {
                             <th>Payment</th>
                         </tr>
                     </thead>
-                    <tbody className=''>
+                    <tbody className='text-center'>
                         <tr>
                             <th>
                                 1
                             </th>
                             <td>
-                                <div className="flex items-center space-x-3">
+                                <div className="flex justify-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
                                             <img src={logo} alt="Avatar Tailwind CSS Component" />

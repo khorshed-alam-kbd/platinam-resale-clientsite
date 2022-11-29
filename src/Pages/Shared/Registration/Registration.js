@@ -101,7 +101,7 @@ const Registration = () => {
         <div className="hero glass pt-3 pb-5">
             <div>
                 <h1 className="text-3xl font-bold mb-5 text-center">Registration</h1>
-                <div className="card flex-shrink-0  w-96 max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0  w-80 md:w-96 lg:w-96 shadow-2xl bg-base-100">
                     <Form onSubmit={handleSubmit(handleOnsubmitRegistration)}>
                         <div className="card-body" >
                             <div className="form-control">

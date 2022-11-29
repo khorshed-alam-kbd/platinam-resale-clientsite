@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../../../Assets/buy&sell.jpg'
 
 const AllBuyers = () => {
     return (
@@ -8,35 +7,21 @@ const AllBuyers = () => {
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
 
-                    <thead className='text-center'>
+                    <thead className=''>
                         <tr>
                             <th>SL No.</th>
                             <th>Name</th>
                             <th>Email Address</th>
-                            <th>Price</th>
-                            <th>Payment</th>
+                            <th>Delete Buyer</th>
                         </tr>
                     </thead>
-                    <tbody className='text-center'>
+                    <tbody className=''>
                         <tr>
+                            <th> 1</th>
+                            <td> Khorshed alam</td>
+                            <td> Zemlak, Daniel and Leanno</td>
                             <th>
-                                1
-                            </th>
-                            <td>
-                                <div className="flex justify-center space-x-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={logo} alt="Avatar Tailwind CSS Component" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Zemlak, Daniel and Leanno
-                            </td>
-                            <td>Purple</td>
-                            <th>
-                                <button className="btn btn-outline btn-sm">Pay Now</button>
+                                <button className="btn btn-outline btn-sm">Delete</button>
                             </th>
                         </tr>
                     </tbody>

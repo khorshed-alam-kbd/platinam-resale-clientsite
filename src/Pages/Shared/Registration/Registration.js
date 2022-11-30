@@ -22,6 +22,7 @@ const Registration = () => {
         const email = data.email;
         const password = data.password
         const userRole = data.userType
+        const userStatus = false
 
         createUser(email, password)
             .then(result => {
@@ -37,7 +38,7 @@ const Registration = () => {
                 navigate('/')
                 setError('');
                 handleUpdateUserProfile(userName);
-                uploadUserToDb(userName, email, userRole)
+                uploadUserToDb(userName, email, userRole, userStatus)
 
             })
             .catch(error => {
@@ -82,8 +83,8 @@ const Registration = () => {
             })
             .catch(error => console.error(error))
     };
-    const uploadUserToDb = (userName, email, userRole) => {
-        const user = { userName, email, userRole }
+    const uploadUserToDb = (userName, email, userRole, userStatus) => {
+        const user = { userName, email, userRole, userStatus }
         fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/users`, {
             method: 'POST',
             headers: {

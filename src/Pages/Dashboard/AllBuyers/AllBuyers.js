@@ -11,9 +11,9 @@ const AllBuyers = () => {
             .then(res => res.json())
     });
 
-    const handleDeleteUser = (id) => {
+    const handleDeleteUser = (id, name) => {
         swal({
-            title: "Are you sure to delete User?",
+            text: `Are you sure to delete buyer ${name} account?`,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -28,7 +28,7 @@ const AllBuyers = () => {
                             console.log(data);
                             if (data.deletedCount > 0) {
                                 swal({
-                                    title: "User deleted Successfully",
+                                    text: `Buyer ${name} account deleted successfully`,
                                     icon: "success",
                                 });
                                 refetch();
@@ -61,7 +61,7 @@ const AllBuyers = () => {
                                     <td> {buyer.userName} </td>
                                     <td> {buyer.email} </td>
                                     <th>
-                                        <button onClick={() => handleDeleteUser(buyer._id)} className="btn btn-outline btn-sm">Delete</button>
+                                        <button onClick={() => handleDeleteUser(buyer._id, buyer.userName)} className="btn btn-outline btn-error btn-sm">Delete</button>
                                     </th>
                                 </tr>
                             )

@@ -13,12 +13,12 @@ const AddProduct = () => {
             <div className="card flex-shrink-0 w-80  md:w-1/2 lg:w-1/2 mx-auto shadow-2xl bg-base-100">
                 <Form onSubmit={handleSubmit(handleOnSubmit)} >
                     <div className="card-body mb-0">
-                        <div className='lg:flex lg:justify-between '>
+                        <div className='lg:flex gap-2 lg:justify-between '>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name:</span>
+                                    <span className="label-text">Product Name:</span>
                                 </label>
-                                <input type="text" placeholder="Product Name" {...register("name", { required: true })} className="input input-bordered" required />
+                                <input type="text" placeholder="Product Name" {...register("productName", { required: true })} className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -27,12 +27,12 @@ const AddProduct = () => {
                                 <input type="text" placeholder="Product Resale Price" {...register("resalePrice", { required: true })} className="input input-bordered" required />
                             </div>
                         </div>
-                        <div className='lg:flex lg:justify-between '>
+                        <div className='lg:flex gap-2  lg:justify-between '>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Original Price:</span>
                                 </label>
-                                <input type="text" placeholder="Product Name" {...register("originalPrice", { required: true })} className="input input-bordered" required />
+                                <input type="text" placeholder="Product original price" {...register("originalPrice", { required: true })} className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -42,28 +42,26 @@ const AddProduct = () => {
                             </div>
                         </div>
 
-                        <div className='lg:flex lg:justify-between w-full '>
+                        <div className='lg:flex gap-2  lg:justify-between w-full '>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Post Date:</span>
                                 </label>
-                                <input type="text" placeholder="Post Date" {...register("postdate", { required: true })} className="input input-bordered" required />
+                                <input type="text" placeholder="Post Date" {...register("postDate", { required: true })} className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Descriptions:</span>
                                 </label>
                                 <input type="text" placeholder="Products Descriptions" {...register("descriptions", { required: true })} className="input input-bordered" required />
-                                {errors.name && <span className='text-red-500' >Phone Number is required</span>}
                             </div>
                         </div>
-                        <div className='lg:flex lg:justify-between w-full ' >
+                        <div className='lg:flex gap-2 lg:justify-between w-full ' >
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Phone Number:</span>
                                 </label>
-                                <input type="text" placeholder="Phone Number" {...register("number", { required: true })} className="input input-bordered" required />
-                                {errors.name && <span className='text-red-500' >Phone Number is required</span>}
+                                <input type="text" placeholder="Phone Number" {...register("phoneNumber", { required: true })} className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -73,10 +71,10 @@ const AddProduct = () => {
                                 {errors.name && <span className='text-red-500' >Location is required</span>}
                             </div>
                         </div>
-                        <div className='lg:flex lg:justify-between w-full '>
+                        <div className='lg:flex gap-2 lg:justify-between w-full '>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Category:</span>
+                                    <span className="label-text">Product Category:</span>
                                 </label>
                                 <select {...register("category", { required: true })} className="select select-bordered w-full" required>
                                     <option >01-ASUS</option>
@@ -87,7 +85,7 @@ const AddProduct = () => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Condition:</span>
+                                    <span className="label-text">Product Condition:</span>
                                 </label>
                                 <select {...register("condition", { required: true })} className="select select-bordered w-full" required>
                                     <option >Excellent</option>
@@ -98,7 +96,7 @@ const AddProduct = () => {
                         </div>
                         <div className="form-control w-full">
                             <label className="label">
-                                <span className="label-text">Photo:</span>
+                                <span className="label-text">Product Photo:</span>
                             </label>
                             <input type="file" placeholder="Products photo" {...register("photoFile", { required: true })} className="file-input file-input-bordered w-full" required />
                         </div>

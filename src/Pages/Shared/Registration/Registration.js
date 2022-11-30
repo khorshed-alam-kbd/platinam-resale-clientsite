@@ -130,8 +130,8 @@ const Registration = () => {
                                     <span className="label-text">Account</span>
                                 </label>
                                 <select {...register("userType", { required: true })} className="select select-bordered w-full max-w-xs">
-                                    <option >Buyer</option>
-                                    <option >Seller</option>
+                                    <option >buyer</option>
+                                    <option >seller</option>
                                 </select>
                             </div>
                             <p className='text-red-500'>{error}</p>

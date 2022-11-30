@@ -12,13 +12,7 @@ const Header = () => {
     }
     const menuItems = <>
         < li > <Link to='/' className='rounded-lg'> HOME</Link></li>
-
-        {
-            user?.uid ?
-                < li > <Link to='/dashboard'>DASHBOARD</Link></li>
-                :
-                <></>
-        }
+        < li > <Link to='/dashboard'>DASHBOARD</Link></li>
         < li > <Link to='/blog' className='rounded-lg'> BLOG</Link></li>
     </>
     return (

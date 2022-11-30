@@ -13,6 +13,7 @@ import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import Login from "../../Pages/Shared/Login/Login";
 import Registration from "../../Pages/Shared/Registration/Registration";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         children: [
             {
                 path: '/dashboard',

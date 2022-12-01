@@ -10,7 +10,7 @@ const HomeBanner = () => {
                 <div className="max-w-full">
                     <h1 className="mb-5 mt-10 text-5xl font-bold">' DO YOU WANT TO BUY OR SELL LAPTOP ? '</h1>
                     <p className="mb-5">We are ready to help buy and sell laptops. Our platform are safe, smart, and convenient for our customers.</p>
-                    <Link to='/services'><button className="btn btn-outline mb-10 rounded">Get Started</button></Link>
+                    <Link to='/login'><button className="btn btn-outline mb-10 rounded">Get Started</button></Link>
                 </div>
             </div>
         </div>

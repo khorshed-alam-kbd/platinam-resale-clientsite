@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Form } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../../Context/AuthProvider';
 import swal from 'sweetalert';
@@ -8,8 +8,8 @@ import swal from 'sweetalert';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
-    console.log(user.displayName)
-    console.log(user.email)
+
+    const navigate = useNavigate();
 
     const imageHostKey = process.env.REACT_APP_NOT_SECRET_imageBB_key
     // console.log(imageHostKey)
@@ -20,8 +20,6 @@ const AddProduct = () => {
             .then(res => res.json())
     });
     const { register, handleSubmit } = useForm();
-
-
     const handleOnSubmit = (data) => {
 
         const sellerName = user?.displayName
@@ -58,6 +56,7 @@ const AddProduct = () => {
                     icon: "success",
                     button: "Done",
                 });
+                navigate('/dashboard/myProducts')
             })
             .catch((error) => {
                 console.error('Error:', error);

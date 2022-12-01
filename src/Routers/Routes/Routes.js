@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <ProductDetails></ProductDetails>,
+                element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
                 loader: ({ params }) => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/categories/${params.id}`)
             },
             {

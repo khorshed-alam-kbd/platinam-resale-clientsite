@@ -1,9 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import swal from 'sweetalert';
 
-
 const AllBuyers = () => {
-    // const { user } = useContext(AuthContext);
 
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['buyers'],
@@ -11,7 +9,7 @@ const AllBuyers = () => {
             .then(res => res.json())
     });
 
-    const handleDeleteUser = (id, name) => {
+    const handleDeleteBuyer = (id, name) => {
         swal({
             text: `Are you sure to delete buyer ${name} account?`,
             icon: "warning",
@@ -56,12 +54,12 @@ const AllBuyers = () => {
                     <tbody className='rounded'>
                         {
                             buyers.map((buyer, index) =>
-                                <tr>
+                                <tr key={index}>
                                     <td> {index + 1} </td>
                                     <td> {buyer.userName} </td>
                                     <td> {buyer.email} </td>
                                     <th>
-                                        <button onClick={() => handleDeleteUser(buyer._id, buyer.userName)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                        <button onClick={() => handleDeleteBuyer(buyer._id, buyer.userName)} className="btn btn-outline btn-error btn-sm">Delete</button>
                                     </th>
                                 </tr>
                             )

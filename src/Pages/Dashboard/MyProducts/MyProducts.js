@@ -1,48 +1,110 @@
-import React from 'react';
-
-import logo from '../../../Assets/bannerImg.webp'
+import React, { useContext } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { AuthContext } from '../../../Context/AuthProvider';
+import swal from 'sweetalert';
 
 const MyProducts = () => {
+    const { user } = useContext(AuthContext);
+    const email = user?.email;
+
+    const { data: products = [], refetch } = useQuery({
+        queryKey: ['products'],
+        queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products?email=${email}`)
+            .then(res => res.json())
+    });
+    // console.log(products)
+    const handleDeleteProduct = (id, name) => {
+        swal({
+            text: `Are you sure to delete ${name} ?`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.deletedCount > 0) {
+                                swal({
+                                    text: `${name} deleted successfully`,
+                                    icon: "success",
+                                });
+                                refetch();
+                            }
+                        });
+                }
+            });
+
+
+    }
+
     return (
         <div className='p-5'>
             <h1 className='font-bold'>My Products:</h1>
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
 
-                    <thead className='text-center'>
+                    <thead>
                         <tr>
                             <td>SL No.</td>
                             <th>Image</th>
-                            <th>Product Status</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Status</th>
                             <th>Price</th>
                             <th>Advertisement</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody className='text-center'>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <div className="flex justify-center space-x-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={logo} alt="Avatar Tailwind CSS Component" />
+                    <tbody>
+                        {
+                            products.map((product, i) =>
+                                <tr key={i}>
+                                    <td>{i + 1}</td>
+                                    <td>
+                                        <div className="flex space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={product.productImage} alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Sold
-                            </td>
-                            <td>Purple</td>
-                            <th>
-                                <button className="btn btn-outline btn-sm">Advertised</button>
-                            </th>
-                            <th>
-                                <button className="btn btn-outline btn-sm">Delete</button>
-                            </th>
-                        </tr>
+                                    </td>
+                                    <td>
+                                        {product.productName}
+                                    </td>
+                                    <td>
+                                        {product.category}
+                                    </td>
+                                    <td>
+                                        {product.productStatus}
+                                    </td>
+                                    <td>{product.resalePrice}</td>
+                                    <th>
+                                        <button className="btn btn-outline btn-sm">Advertised</button>
+                                    </th>
+                                    <th>
+                                        <button onClick={() => handleDeleteProduct(product._id, product.productName)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                    </th>
+                                </tr>)
+                        }
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

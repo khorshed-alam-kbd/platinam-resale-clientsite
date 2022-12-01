@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CategoryCard = (category) => {
-    const { categoryName, categoryDetails, img } = category.category;
-    console.log(categoryName, categoryDetails)
+
+    const { categoryName, categoryDetails, img, _id } = category.category;
+    console.log(category.category, _id)
     return (
         <div className="card card-compact bg-base-200 shadow-xl w-3/4 mx-auto">
             <figure className='h-48 '>
@@ -13,7 +14,7 @@ const CategoryCard = (category) => {
                 <h2 className="card-title">{categoryName}</h2>
                 <p>{categoryDetails.slice(0, 100)}...</p>
                 <div className="card-actions justify-center">
-                    <Link to={`/category/:id`}>
+                    <Link to={`/category/${_id}`}>
                         <button className="btn btn-outline">Details</button>
                     </Link>
                 </div>

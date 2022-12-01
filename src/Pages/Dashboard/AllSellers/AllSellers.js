@@ -80,7 +80,7 @@ const AllSellers = () => {
                     <tbody className=''>
                         {
                             sellers.map((seller, index) =>
-                                <tr>
+                                <tr key={index}>
                                     <td> {index + 1}</td>
                                     <td> {seller.userName}</td>
                                     <td> {seller.email}</td>
@@ -97,6 +97,15 @@ const AllSellers = () => {
                             )
                         }
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div >

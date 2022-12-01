@@ -70,7 +70,7 @@ const Login = () => {
                 navigate(from, { replace: true });
                 swal({
                     title: "Congratulations",
-                    text: "You are Login successfully",
+                    text: "Your login successfully",
                     icon: "success",
                     button: "Done",
                 });

@@ -1,28 +1,29 @@
 import React, { useContext } from 'react';
+import { AuthContext } from '../../../../Context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import { AuthContext } from '../../../Context/AuthProvider';
 import swal from 'sweetalert';
 
-const MyProducts = () => {
+const ReportedItems = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
-        queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products/seller/?email=${email}`)
+        queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products?reportStatus=reported`)
             .then(res => res.json())
     });
     // console.log(products)
-    const handleDeleteProduct = (id, name) => {
+
+    const handleReportedItemDelete = (id) => {
         swal({
-            text: `Are you sure to delete ${name} ?`,
+            text: `Are you sure to delete this product?`,
             icon: "warning",
             buttons: true,
             dangerMode: true,
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products/${id}`, {
+                    fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products/report/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -30,7 +31,7 @@ const MyProducts = () => {
                             console.log(data);
                             if (data.deletedCount > 0) {
                                 swal({
-                                    text: `${name} deleted successfully`,
+                                    text: `This product deleted successfully`,
                                     icon: "success",
                                 });
                                 refetch();
@@ -41,22 +42,18 @@ const MyProducts = () => {
 
 
     }
-
     return (
         <div className='p-5'>
-            <h1 className='font-bold'>My Products:</h1>
+            <h1 className='font-bold'>Reported Items:</h1>
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
-
                     <thead>
                         <tr>
-                            <td>SL No.</td>
+                            <th>SL No.</th>
                             <th>Image</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Status</th>
-                            <th>Price</th>
-                            <th>Advertisement</th>
+                            <th>Product Name</th>
+                            <th>Product Category</th>
+                            <th>Reported by</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -74,29 +71,17 @@ const MyProducts = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        {product.productName}
-                                    </td>
-                                    <td>
-                                        {product.category}
-                                    </td>
-                                    <td>
-                                        {product.productStatus}
-                                    </td>
-                                    <td>{product.resalePrice}</td>
+                                    <td>{product.productName}</td>
+                                    <td>{product.category}</td>
+                                    <td>{product.reportedBy}</td>
                                     <th>
-                                        <button className="btn btn-outline btn-sm">Advertised</button>
-                                    </th>
-                                    <th>
-                                        <button onClick={() => handleDeleteProduct(product._id, product.productName)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                        <button onClick={() => handleReportedItemDelete(product._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
                                     </th>
                                 </tr>)
                         }
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th></th>
-                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -111,4 +96,4 @@ const MyProducts = () => {
     );
 };
 
-export default MyProducts;
+export default ReportedItems;

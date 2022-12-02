@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import swal from 'sweetalert';
 import { AuthContext } from '../../Context/AuthProvider';
+import useBlueTick from '../../hook/useBlueTick';
+import { FcApproval } from "react-icons/fc";
 
 const ProductDetailsCard = ({ product, setProduct }) => {
     const { user } = useContext(AuthContext);
@@ -9,12 +11,7 @@ const ProductDetailsCard = ({ product, setProduct }) => {
     const { _id, sellerName, sellerEmail, productName, resalePrice, originalPrice, yearOfPurchase, postDate, descriptions, phoneNumber, location, productStatus, condition, productImage } = product;
     console.log(sellerEmail);
 
-    // const { data: user, isLoading, refetch } = useQuery({
-    //     queryKey: ['users'],
-    //     queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/users/${sellerEmail}`)
-    //         .then(res => res.json())
-    // });
-    // if (isLoading) return <button className="btn btn-square loading"></button>
+    const isVerify = useBlueTick(sellerEmail);
 
     const handleReport = (id) => {
         swal({
@@ -69,7 +66,11 @@ const ProductDetailsCard = ({ product, setProduct }) => {
                 <p><span className='font-semibold'>Descriptions:</span>  {descriptions}</p>
                 <p><span className='font-semibold'>Location:</span>  {location}</p>
                 <p><span className='font-semibold'>Contact Number:</span>  {phoneNumber}</p>
-                <p><span className='font-semibold'>Seller Name:</span>  {sellerName}</p>
+                {
+                    isVerify && <p><span className='font-semibold'>Seller Name:</span> {sellerName} <FcApproval /></p>
+                    || <p><span className='font-semibold'>Seller Name:</span>  {sellerName}</p>
+                }
+
                 <p><span className='font-semibold'>Post Date:</span>  {postDate}</p>
                 <div className="card-actions justify-between mt-2">
                     <button onClick={() => handleReport(_id)} className="btn btn-outline btn-sm">Report</button>

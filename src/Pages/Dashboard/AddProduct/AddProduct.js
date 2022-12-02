@@ -52,7 +52,7 @@ const AddProduct = () => {
                 console.log(productImage);
                 uploadProductToDb(sellerName, sellerEmail, productName, resalePrice, originalPrice, yearOfPurchase, postDate, descriptions, phoneNumber, location, category, condition, productStatus, productImage);
                 swal({
-                    text: `${category} ${productName} added successfully`,
+                    text: `${productName} added successfully`,
                     icon: "success",
                     button: "Done",
                 });

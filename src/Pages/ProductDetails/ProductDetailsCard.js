@@ -11,7 +11,8 @@ const ProductDetailsCard = ({ product, setProduct }) => {
     const { _id, sellerName, sellerEmail, productName, resalePrice, originalPrice, yearOfPurchase, postDate, descriptions, phoneNumber, location, productStatus, condition, productImage } = product;
     console.log(sellerEmail);
 
-    const isVerify = useBlueTick(sellerEmail);
+    const [isVerify] = useBlueTick(sellerEmail);
+    console.log('v', isVerify);
 
     const handleReport = (id) => {
         swal({
@@ -55,8 +56,8 @@ const ProductDetailsCard = ({ product, setProduct }) => {
     }
 
     return (
-        <div className="card lg:card-side w-full bg-base-100 shadow-xl rounded">
-            <figure className='lg:w-1/2'><img src={productImage} alt="laptops" /></figure>
+        <div className="card w-full bg-base-100 shadow-xl rounded">
+            <figure className=''><img src={productImage} alt="laptops" /></figure>
             <div className="card-body bg-base-200">
                 <h2 className="card-title">{productName}</h2>
                 <p><span className='font-semibold'> Selling Price:</span>  {resalePrice} TK</p>
@@ -67,7 +68,7 @@ const ProductDetailsCard = ({ product, setProduct }) => {
                 <p><span className='font-semibold'>Location:</span>  {location}</p>
                 <p><span className='font-semibold'>Contact Number:</span>  {phoneNumber}</p>
                 {
-                    isVerify && <p><span className='font-semibold'>Seller Name:</span> {sellerName} <FcApproval /></p>
+                    isVerify === true && <p className='flex flex-row gap-1'><span className='font-semibold'>Seller Name:</span> {sellerName} <FcApproval /></p>
                     || <p><span className='font-semibold'>Seller Name:</span>  {sellerName}</p>
                 }
 

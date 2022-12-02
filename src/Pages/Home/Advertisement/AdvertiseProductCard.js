@@ -5,7 +5,7 @@ const AdvertiseProductCard = ({ product, setProduct }) => {
 
     console.log(product);
     return (
-        <div className="card card-compact bg-base-100 shadow-xl w-3/4">
+        <div className="card card-compact bg-base-200 shadow-xl w-3/4">
             <figure className='h-24 md:h-32 lg:h-32 '>
                 <img src={productImage} alt="laptop category" />
             </figure>

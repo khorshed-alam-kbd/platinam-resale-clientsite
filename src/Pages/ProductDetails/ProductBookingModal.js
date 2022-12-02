@@ -6,10 +6,10 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const ProductBookingModal = ({ product, refetch }) => {
     const { _id, productName, resalePrice } = product;
-    console.log('modal', product);
+    // console.log('modal', product);
 
     const { user } = useContext(AuthContext)
-    console.log('modal', user)
+    // console.log('modal', user)
 
     const { register, handleSubmit } = useForm();
     const handleOnSubmit = (data) => {

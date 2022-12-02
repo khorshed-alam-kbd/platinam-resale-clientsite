@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CategoryCard = (category) => {
 
     const { categoryName, categoryDetails, img, _id } = category.category;
-    console.log(category.category, _id)
+    // console.log(category.category, _id)
     return (
         <div className="card card-compact bg-base-200 shadow-xl w-3/4 mx-auto">
             <figure className='h-48 '>

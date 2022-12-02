@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { AuthContext } from '../../../Context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
+import useBuyer from '../../../hook/useBuyer';
 
 const Login = () => {
     const { providerLogin, logIn } = useContext(AuthContext);
@@ -12,6 +13,9 @@ const Login = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [email, setEmail] = useState(null)
+    const [isBuyer] = useBuyer(email)
 
     const from = location.state?.from?.pathname || '/'
 
@@ -75,7 +79,12 @@ const Login = () => {
                     button: "Done",
                 });
                 const userRole = 'buyer';
-                uploadUserToDb(user.displayName, user.email, userRole)
+
+                setEmail(user.email);
+                if (isBuyer === true) {
+                    uploadUserToDb(user.displayName, user.email, userRole)
+                    console.log('xx', isBuyer)
+                }
 
             })
             .catch(error => console.error(error))

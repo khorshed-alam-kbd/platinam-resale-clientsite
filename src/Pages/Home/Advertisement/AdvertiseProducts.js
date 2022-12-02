@@ -13,7 +13,7 @@ const AdvertiseProducts = () => {
             .then(data => setProducts(data));
 
     }, [])
-    console.log(products)
+    // console.log(products)
     return (
         <div>
             {
@@ -38,7 +38,6 @@ const AdvertiseProducts = () => {
                 product &&
                 <ProductBookingModal
                     product={product}
-
                 ></ProductBookingModal>
             }
         </div>

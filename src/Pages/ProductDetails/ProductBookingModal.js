@@ -4,7 +4,7 @@ import { Form } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../Context/AuthProvider';
 
-const ProductBookingModal = ({ product }) => {
+const ProductBookingModal = ({ product, refetch }) => {
     const { _id, productName, resalePrice } = product;
     console.log('modal', product);
 
@@ -25,6 +25,7 @@ const ProductBookingModal = ({ product }) => {
             icon: "success",
             button: "Done",
         });
+        refetch();
 
     }
     const updateBookedProductToDb = (buyerName, buyerEmail, productStatus, buyerPhoneNumber, meetingLocation) => {

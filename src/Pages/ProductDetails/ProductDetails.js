@@ -9,7 +9,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState(null);
 
     const categoryName = category.categoryName
-    const { data: products, isLoading } = useQuery({
+    const { data: products, isLoading, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products?category=${categoryName}`)
             .then(res => res.json())
@@ -31,6 +31,7 @@ const ProductDetails = () => {
                 product &&
                 <ProductBookingModal
                     product={product}
+                    refetch={refetch}
                 ></ProductBookingModal>
             }
         </div>

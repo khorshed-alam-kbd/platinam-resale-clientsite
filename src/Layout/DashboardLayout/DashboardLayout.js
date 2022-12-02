@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
+import useAdmin from '../../hook/useAdmin';
+import useBuyer from '../../hook/useBuyer';
+import useSeller from '../../hook/useSeller';
 import Footer from '../../Pages/Shared/Footer/Footer';
 import Header from '../../Pages/Shared/Header/Header';
 
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
+    const [isSeller] = useSeller(user?.email)
+    const [isBuyer] = useBuyer(user?.email)
     return (
         <div>
             <Header></Header>
@@ -20,12 +28,23 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-1/2 lg:w-80 bg-base-200 text-base-content font-semibold">
 
-                        <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
-                        <li><Link to='/dashboard/myProducts'>My Products</Link></li>
-                        <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
-                        <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
-                        <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
-                        <li><Link to='/dashboard/reportedItems'>Reported Items</Link></li>
+                        {
+                            isBuyer && <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
+                        }
+
+                        {
+                            isSeller && <>
+                                <li><Link to='/dashboard/myProducts'>My Products</Link></li>
+                                <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
+                            </>
+                        }
+                        {
+                            isAdmin && <>
+                                <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+                                <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
+                                <li><Link to='/dashboard/reportedItems'>Reported Items</Link></li>
+                            </>
+                        }
 
                     </ul>
 

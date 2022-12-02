@@ -3,10 +3,10 @@ import React from 'react';
 const Blog = () => {
     return (
         <div>
-            <div className='px-10 py-5 text-white'>
-                <div className='bg-black rounded-xl p-5'>
+            <div className='px-10 py-5 '>
+                <div className='bg-base-200 rounded-xl p-5'>
                     <p className='text-xl font-semibold '> Question 01 : What are the different ways to manage a state in a React application? </p>
-                    <div className='bg-zinc-900 rounded-xl my-5 p-5'>
+                    <div className='bg-base-100 rounded-xl my-5 p-5'>
                         <p className='my-3'><span className='font-semibold' >Answer : <br /> </span>
                             <span>
                                 There are many way built into the core React library for managing a state in a React application.<br />
@@ -17,10 +17,10 @@ const Blog = () => {
                     </div>
                 </div>
             </div >
-            <div className='px-10 py-5 text-white'>
-                <div className='bg-black rounded-xl p-5'>
+            <div className='px-10 py-5 '>
+                <div className='bg-base-200 rounded-xl p-5'>
                     <p className='text-xl font-semibold '> Question 02 : How does prototypical inheritance work?</p>
-                    <div className='bg-zinc-900 rounded-xl my-5 p-5'>
+                    <div className='bg-base-100 rounded-xl my-5 p-5'>
                         <p className='my-3'><span className='font-semibold' >Answer : <br /> </span>
                             <span>
                                 Every object with its methods and properties contains an internal and hidden property known as [[Prototype]]. The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object.getPrototypeOf and Object.setPrototypeOf. Nowadays, in modern language, it is being set using __proto__.
@@ -29,10 +29,10 @@ const Blog = () => {
                     </div>
                 </div>
             </div >
-            <div className='px-10 py-5 text-white'>
-                <div className='bg-black rounded-xl p-5'>
+            <div className='px-10 py-5 '>
+                <div className='bg-base-200 rounded-xl p-5'>
                     <p className='text-xl font-semibold '> Question 03 : What is a unit test? Why should we write unit tests? </p>
-                    <div className='bg-zinc-900 rounded-xl my-5 p-5'>
+                    <div className='bg-base-100 rounded-xl my-5 p-5'>
                         <p className='my-3'><span className='font-semibold' >Answer : <br /> </span>
                             <span>
                                 Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. This testing methodology is done during the development process by the software developers and sometimes QA staff.  The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.
@@ -41,10 +41,10 @@ const Blog = () => {
                     </div>
                 </div>
             </div >
-            <div className='px-10 py-5 text-white'>
-                <div className='bg-black rounded-xl p-5'>
+            <div className='px-10 py-5'>
+                <div className='bg-base-200 rounded-xl p-5'>
                     <p className='text-xl font-semibold '> Question 04 : What are the different ways to manage a state in a React application? </p>
-                    <div className='bg-zinc-900 rounded-xl my-5 p-5'>
+                    <div className='bg-base-100 rounded-xl my-5 p-5'>
                         <p className='my-3'><span className='font-semibold' >Answer : <br /> </span>
                             <span className='font-bold'>Angular</span> is the most mature of the frameworks, has good backing in terms of contributors and is a complete package. However, the learning curve is steep and concepts of development in Angular may put off new developers. Angular is a good choice for companies with large teams and developers who already use TypeScript.
                             <br />

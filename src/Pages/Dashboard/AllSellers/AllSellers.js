@@ -55,7 +55,6 @@ const AllSellers = () => {
                         icon: "success",
                     });
                     refetch();
-
                 }
             })
             .catch(err => console.error(err));

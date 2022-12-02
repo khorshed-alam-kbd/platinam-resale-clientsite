@@ -38,7 +38,27 @@ const MyProducts = () => {
                         });
                 }
             });
-
+    }
+    const handleProductAdvertisement = (id, name) => {
+        fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products/advertisement/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ advertisementStatus: true })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    swal({
+                        text: `Product ${name} advertisement successfully`,
+                        icon: "success",
+                    });
+                    refetch();
+                }
+            })
+            .catch(err => console.error(err));
 
     }
 
@@ -85,7 +105,9 @@ const MyProducts = () => {
                                     </td>
                                     <td>{product.resalePrice}</td>
                                     <th>
-                                        <button className="btn btn-outline btn-sm">Advertised</button>
+                                        {product.advertisementStatus !== true &&
+                                            <button onClick={() => handleProductAdvertisement(product._id, product.productName)} className="btn btn-outline btn-sm">Advertised</button> || <></>
+                                        }
                                     </th>
                                     <th>
                                         <button onClick={() => handleDeleteProduct(product._id, product.productName)} className="btn btn-outline btn-error btn-sm">Delete</button>

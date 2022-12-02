@@ -11,12 +11,12 @@ const Header = () => {
             .catch((error) => { });
     }
     const menuItems = <>
-        < li > <Link to='/' className='rounded-lg'> HOME</Link></li>
-        < li > <Link to='/dashboard'>DASHBOARD</Link></li>
-        < li > <Link to='/blog' className='rounded-lg'> BLOG</Link></li>
+        < li > <Link to='/' className='rounded-lg font-semibold'> HOME</Link></li>
+        < li > <Link to='/dashboard' className='rounded-lg font-semibold'>DASHBOARD</Link></li>
+        < li > <Link to='/blog' className='rounded-lg font-semibold'> BLOG</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100" data-theme="luxury">
+        <div className="navbar bg-base-300">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -43,9 +43,9 @@ const Header = () => {
             <div className="navbar-end">
                 {
                     user?.uid ?
-                        <Link onClick={handleSignOut}><button className="btn btn-outline mr-3 rounded-lg">LOGOUT</button></Link>
+                        <Link onClick={handleSignOut}><button className="btn btn-outline mr-5 rounded-lg">LOGOUT</button></Link>
                         :
-                        <Link to='/login' ><button className="btn btn-outline mr-3 rounded-lg">LOGIN</button></Link>
+                        <Link to='/login' ><button className="btn btn-outline mr-5 rounded-lg">LOGIN</button></Link>
                 }
 
             </div>

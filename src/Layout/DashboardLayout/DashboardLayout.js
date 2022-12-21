@@ -9,9 +9,26 @@ import Header from '../../Pages/Shared/Header/Header';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
-    const [isAdmin] = useAdmin(user?.email)
-    const [isSeller] = useSeller(user?.email)
-    const [isBuyer] = useBuyer(user?.email)
+    const [isAdmin, isAdminLoading] = useAdmin(user?.email)
+    const [isSeller, isSellerLoading] = useSeller(user?.email)
+    const [isBuyer, isBuyerLoading] = useBuyer(user?.email)
+
+    if (isAdminLoading) {
+        <div className='text-center'>
+            <button className="btn-ghost loading">Please wait, Data is loading !</button>
+        </div>
+    }
+    if (isBuyerLoading) {
+        <div className='text-center'>
+            <button className="btn-ghost loading">Please wait, Data is loading !</button>
+        </div>
+    }
+    if (isSellerLoading) {
+        <div className='text-center'>
+            <button className="btn-ghost loading">Please wait, Data is loading !</button>
+        </div>
+    }
+    // console.log(isBuyer);
     return (
         <div>
             <Header></Header>

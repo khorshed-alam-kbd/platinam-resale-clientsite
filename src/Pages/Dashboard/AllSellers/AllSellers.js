@@ -5,13 +5,11 @@ import { FcApproval } from "react-icons/fc";
 
 
 const AllSellers = () => {
-    const { data: sellers = [], refetch } = useQuery({
+    const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/sellers?userRole=seller`)
             .then(res => res.json())
     });
-    // console.log(sellers)
-
     const handleDeleteSeller = (id, name) => {
         swal({
             text: `Are you sure to delete seller ${name} account ?`,
@@ -66,7 +64,6 @@ const AllSellers = () => {
             <h1 className='font-bold'>Sellers Information:</h1>
             <div className="p-5 overflow-x-auto w-full">
                 <table className="table w-full ">
-
                     <thead className=''>
                         <tr>
                             <td>SL No.</td>
@@ -76,26 +73,29 @@ const AllSellers = () => {
                             <th>Delete </th>
                         </tr>
                     </thead>
-                    <tbody className=''>
-                        {
-                            sellers.map((seller, index) =>
-                                <tr key={index}>
-                                    <td> {index + 1}</td>
-                                    <td> {seller.userName}</td>
-                                    <td> {seller.email}</td>
-                                    <th>
-                                        {
-                                            seller.userStatus ? <p className='flex flex-row items-center gap-1 text-blue-600'><FcApproval />VERIFIED </p>
-                                                : <button onClick={() => handleVerifySeller(seller._id, seller.userName)} className="btn btn-outline btn-success btn-sm">Verify</button>
-                                        }
-                                    </th>
-                                    <th>
-                                        <button onClick={() => handleDeleteSeller(seller._id, seller.userName)} className="btn btn-outline btn-error btn-sm">Delete</button>
-                                    </th>
-                                </tr>
-                            )
-                        }
-                    </tbody>
+                    {
+                        isLoading ? <div className='text-center'><button className="btn-ghost loading">Please wait, Data is loading !</button></div> :
+                            <tbody>
+                                {
+                                    sellers.map((seller, index) =>
+                                        <tr key={index}>
+                                            <td> {index + 1}</td>
+                                            <td> {seller.userName}</td>
+                                            <td> {seller.email}</td>
+                                            <th>
+                                                {
+                                                    seller.userStatus ? <p className='flex flex-row items-center gap-1 text-blue-600'><FcApproval />VERIFIED </p>
+                                                        : <button onClick={() => handleVerifySeller(seller._id, seller.userName)} className="btn btn-outline btn-success btn-sm">Verify</button>
+                                                }
+                                            </th>
+                                            <th>
+                                                <button onClick={() => handleDeleteSeller(seller._id, seller.userName)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                            </th>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                    }
                     <tfoot>
                         <tr>
                             <th></th>
@@ -106,7 +106,7 @@ const AllSellers = () => {
                         </tr>
                     </tfoot>
                 </table>
-            </div>
+            </div >
         </div >
     );
 };

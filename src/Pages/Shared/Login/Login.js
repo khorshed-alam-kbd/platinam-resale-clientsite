@@ -14,6 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+
     const [email, setEmail] = useState(null)
     const [isBuyer] = useBuyer(email)
 
@@ -66,7 +67,9 @@ const Login = () => {
     };
 
     const googleProvider = new GoogleAuthProvider();
+
     const handleGoogleSignIn = () => {
+
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
@@ -79,16 +82,17 @@ const Login = () => {
                     button: "Done",
                 });
                 const userRole = 'buyer';
-
                 setEmail(user.email);
-                if (isBuyer === true) {
+                if (isBuyer !== true) {
                     uploadUserToDb(user.displayName, user.email, userRole)
                     console.log('xx', isBuyer)
                 }
 
+
             })
             .catch(error => console.error(error))
     };
+
     const uploadUserToDb = (userName, email, userRole) => {
         const user = { userName, email, userRole }
         fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/users`, {

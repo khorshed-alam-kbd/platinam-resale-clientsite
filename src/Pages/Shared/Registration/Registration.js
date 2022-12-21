@@ -83,7 +83,7 @@ const Registration = () => {
                 });
                 const userRole = 'buyer';
                 setEmail(user.email);
-                if (isBuyer === true) {
+                if (isBuyer !== true) {
                     uploadUserToDb(user.displayName, user.email, userRole)
                     console.log('xx', isBuyer)
                 }

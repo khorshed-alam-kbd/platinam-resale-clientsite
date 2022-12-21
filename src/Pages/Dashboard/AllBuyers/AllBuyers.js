@@ -3,7 +3,7 @@ import swal from 'sweetalert';
 
 const AllBuyers = () => {
 
-    const { data: buyers = [], refetch } = useQuery({
+    const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/users?userRole=buyer`)
             .then(res => res.json())
@@ -51,20 +51,25 @@ const AllBuyers = () => {
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody className='rounded'>
-                        {
-                            buyers.map((buyer, index) =>
-                                <tr key={index}>
-                                    <td> {index + 1} </td>
-                                    <td> {buyer.userName} </td>
-                                    <td> {buyer.email} </td>
-                                    <th>
-                                        <button onClick={() => handleDeleteBuyer(buyer._id, buyer.userName)} className="btn btn-outline btn-error btn-sm">Delete</button>
-                                    </th>
-                                </tr>
-                            )
-                        }
-                    </tbody>
+                    {
+                        isLoading ? < div className='text-center'><button className="btn-ghost loading">Please wait, Data is loading !</button></div>
+                            :
+                            <tbody className='rounded'>
+                                {
+                                    buyers.map((buyer, index) =>
+                                        <tr key={index}>
+                                            <td> {index + 1} </td>
+                                            <td> {buyer.userName} </td>
+                                            <td> {buyer.email} </td>
+                                            <th>
+                                                <button onClick={() => handleDeleteBuyer(buyer._id, buyer.userName)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                            </th>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                    }
+
                     <tfoot>
                         <tr>
                             <th></th>
@@ -74,8 +79,8 @@ const AllBuyers = () => {
                         </tr>
                     </tfoot>
                 </table>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

@@ -7,7 +7,7 @@ const ReportedItems = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
 
-    const { data: products = [], refetch } = useQuery({
+    const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products?reportStatus=reported`)
             .then(res => res.json())
@@ -57,29 +57,34 @@ const ReportedItems = () => {
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {
-                            products.map((product, i) =>
-                                <tr key={i}>
-                                    <td>{i + 1}</td>
-                                    <td>
-                                        <div className="flex space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={product.productImage} alt="laptop" />
+                    {
+                        isLoading ?
+                            < div className='text-center'><button className="btn-ghost loading">Please wait, Data is loading !</button></div>
+                            :
+                            <tbody>
+                                {
+                                    products.map((product, i) =>
+                                        <tr key={i}>
+                                            <td>{i + 1}</td>
+                                            <td>
+                                                <div className="flex space-x-3">
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle w-12 h-12">
+                                                            <img src={product.productImage} alt="laptop" />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{product.productName}</td>
-                                    <td>{product.category}</td>
-                                    <td>{product.reportedBy}</td>
-                                    <th>
-                                        <button onClick={() => handleReportedItemDelete(product._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
-                                    </th>
-                                </tr>)
-                        }
-                    </tbody>
+                                            </td>
+                                            <td>{product.productName}</td>
+                                            <td>{product.category}</td>
+                                            <td>{product.reportedBy}</td>
+                                            <th>
+                                                <button onClick={() => handleReportedItemDelete(product._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                            </th>
+                                        </tr>)
+                                }
+                            </tbody>
+                    }
                     <tfoot>
                         <tr>
                             <th></th>

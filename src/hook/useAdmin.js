@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const useAdmin = (email) => {
 
     const [isAdmin, setIsAdmin] = useState(false)
-    const [isAdminLoding, setIsAdminLoading] = useState(true)
+    const [isAdminLoading, setIsAdminLoading] = useState(true)
     useEffect(() => {
         fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/users/admin/${email}`)
             .then(res => res.json())
@@ -13,7 +13,7 @@ const useAdmin = (email) => {
             })
     }, [email])
 
-    return [isAdmin, isAdminLoding]
+    return [isAdmin, isAdminLoading]
 };
 
 export default useAdmin;

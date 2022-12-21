@@ -14,7 +14,7 @@ const ProductDetails = () => {
         queryFn: () => fetch(`${process.env.REACT_APP_NOT_SECRET_serverLink}/products?category=${categoryName}`)
             .then(res => res.json())
     });
-    if (isLoading) return <button className="btn btn-square loading"></button>
+    if (isLoading) return <button className="btn-ghost loading">Please wait, Data is loading !</button>
     // console.log(products)
     return (
         <div>

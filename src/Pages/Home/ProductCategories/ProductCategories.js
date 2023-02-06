@@ -24,9 +24,9 @@ const ProductCategories = () => {
     }
     // console.log(categories)
     return (
-        <div className='mx-5'>
+        <div className='mx-2'>
             <div className='text-center mt-10 mb-5'>
-                <p className='font-semibold'>CATAGORIES</p>
+                <p className='font-semibold badge badge-lg rounded-lg'>CATAGORIES</p>
             </div>
 
             {
@@ -34,7 +34,7 @@ const ProductCategories = () => {
                     <div className='text-center'>
                         <button className="btn btn-ghost loading">Please wait, Data is loading !</button>
                     </div> :
-                    <div className='mx-5 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                    <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center '>
 
                         {
                             categories.map(category => <CategoryCard

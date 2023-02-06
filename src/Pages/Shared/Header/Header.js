@@ -13,7 +13,7 @@ const Header = () => {
     const menuItems = <>
         < li > <Link to='/' className='rounded-lg font-semibold'> HOME</Link></li>
         < li > <Link to='/dashboard' className='rounded-lg font-semibold'>DASHBOARD</Link></li>
-        < li > <Link to='/blog' className='rounded-lg font-semibold'> BLOG</Link></li>
+        {/* < li > <Link to='/blog' className='rounded-lg font-semibold'> BLOG</Link></li> */}
     </>
     return (
         <div className="navbar bg-base-300">

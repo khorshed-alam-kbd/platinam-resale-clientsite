@@ -15,14 +15,14 @@ const AdvertiseProducts = () => {
     }, [])
     // console.log(products)
     return (
-        <div>
+        <div className='mx-2'>
             {
                 products.length > 0 && <div className='mb-5 p-10 bg-base-100'>
 
                     <div className='text-center mt-10 mb-5'>
-                        <p className='font-semibold'>ADVERTISEMENT</p>
+                        <p className='font-semibold badge badge-lg rounded-lg'>ADVERTISEMENT</p>
                     </div>
-                    <div className='mx-5 grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
+                    <div className='grid gap-3 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 place-items-center '>
                         {
                             products.map((product, i) => <AdvertiseProductCard
                                 key={i}

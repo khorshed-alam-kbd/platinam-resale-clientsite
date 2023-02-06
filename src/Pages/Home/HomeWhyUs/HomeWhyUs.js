@@ -5,15 +5,15 @@ const HomeWhyUs = () => {
     return (
         <>
             <div className='text-center mt-10 mb-5'>
-                <p className='font-semibold'>ABOUT US</p>
+                <p className='font-semibold badge badge-lg rounded-lg'>ABOUT US</p>
             </div>
             <div className="hero my-5 bg-base-200">
-                <div className="hero-content flex-col lg:flex-row">
+                <div className="hero-content flex-col lg:flex-row my-12">
                     <img src={whyUsImg} alt='' className="w-80 md:w-3/4 lg:w-1/2 rounded-lg" />
-                    <div>
+                    <div className='lg:ml-10'>
                         <h1 className="text-3xl font-bold">The Largest Marketplace in Bangladesh!</h1>
-                        <p className="pt-6 ml-2">
-                            PLATINAM is a platform on which you can buy and sell laptops! We help people buy and sell laptops.  Our solutions are built to be safe, smart, and convenient for our customers. <br /> People use platinam to find and sell laptops through classified ads. To sell new items or sell used items quickly, we offers Ad Promotion features.
+                        <p className="pt-6">
+                            PLATINAM is a platform on which you can buy and sell laptops! We help people buy and sell laptops.  Our solutions are built to be safe, smart, and convenient for our customers.
 
                             <br /> <span className='font-bold'>Fast & Easy Experience:</span> Navigated buying and selling experience in Bangladesh which is simpler, faster, and easier. Shop and sell on the go and get your desired laptops in just a few clicks.
 

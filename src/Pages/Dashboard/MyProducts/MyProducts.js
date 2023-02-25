@@ -14,7 +14,7 @@ const MyProducts = () => {
     });
     if (isLoading) {
         <div>
-            <button className="btn-ghost loading">Please wait, Data is loading !</button>
+            <button className="btn btn-ghost loading">Please wait, Data is loading !</button>
         </div>
     }
     // console.log(products)

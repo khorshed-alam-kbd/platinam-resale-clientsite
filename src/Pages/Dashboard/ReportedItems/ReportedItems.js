@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../../Context/AuthProvider';
+import { AuthContext } from '../../../Context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import swal from 'sweetalert';
 
@@ -59,7 +59,9 @@ const ReportedItems = () => {
                     </thead>
                     {
                         isLoading ?
-                            < div className='text-center'><button className="btn-ghost loading">Please wait, Data is loading !</button></div>
+                            < div className='text-center'>
+                                <button className="btn btn-ghost loading">Please wait, Data is loading !</button>
+                            </div>
                             :
                             <tbody>
                                 {

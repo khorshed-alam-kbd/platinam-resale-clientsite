@@ -74,7 +74,7 @@ const AllSellers = () => {
                         </tr>
                     </thead>
                     {
-                        isLoading ? <div className='text-center'><button className="btn-ghost loading">Please wait, Data is loading !</button></div> :
+                        isLoading ? <div className='text-center'><button className="btn btn-ghost loading">Please wait, Data is loading !</button></div> :
                             <tbody>
                                 {
                                     sellers.map((seller, index) =>
